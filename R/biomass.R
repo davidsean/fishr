@@ -4,7 +4,7 @@
 #' Calculation of biomass index from the CPUE and area swept
 #'
 #' @param cpue Numeric vector of CPUE values
-#' @param area_swept Numeric vector of area sweph (e.g., km^2)
+#' @param area_swept Numeric vector of area swept (e.g., km^2)
 #'
 #' @returns A numeric vector of the biomass index
 #' @export

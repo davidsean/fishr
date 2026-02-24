@@ -9,7 +9,7 @@ biomass_index(cpue, area_swept)
 \arguments{
 \item{cpue}{Numeric vector of CPUE values}
 
-\item{area_swept}{Numeric vector of area sweph (e.g., km^2)}
+\item{area_swept}{Numeric vector of area swept (e.g., km^2)}
 }
 \value{
 A numeric vector of the biomass index
