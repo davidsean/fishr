@@ -1,4 +1,3 @@
-
 #' Calculate biomass index
 #'
 #' Calculation of biomass index from the CPUE and area swept
