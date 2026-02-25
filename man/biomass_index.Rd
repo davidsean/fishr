@@ -4,18 +4,32 @@
 \alias{biomass_index}
 \title{Calculate biomass index}
 \usage{
-biomass_index(cpue = NULL, area_swept, catch = NULL, effort = NULL, ...)
+biomass_index(
+  cpue = NULL,
+  area_swept,
+  catch = NULL,
+  effort = NULL,
+  verbose = getOption("fishr.verbose", default = FALSE),
+  ...
+)
 }
 \arguments{
 \item{cpue}{Numeric vector of CPUE values}
 
 \item{area_swept}{Numeric vector of area swept (e.g., km^2)}
 
-\item{catch}{Numeric}
+\item{catch}{Numeric vector of catch}
 
-\item{effort}{Numeric}
+\item{effort}{Numeric vector of effort}
 
-\item{...}{arguments passed to CPUE}
+\item{verbose}{Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)}
+
+\item{...}{
+  Arguments passed on to \code{\link[=cpue]{cpue}}
+  \describe{
+    \item{\code{gear_factor}}{Numeric adjustment for gear standardize}
+    \item{\code{method}}{}
+  }}
 }
 \value{
 A numeric vector of the biomass index
