@@ -6,6 +6,7 @@
 #' @param effort Numeric vector of effort
 #' @param gear_factor Numeric adjustment for gear standardize
 #' @param verbose Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)
+#' @param method
 #'
 #' @returns a numeric, vector of CPUE values
 #' @export
@@ -17,11 +18,18 @@ cpue <- function(
   catch,
   effort,
   gear_factor = 1,
+  method = c("ratio", "log"),
   verbose = getOption("fishr.verbose", default = FALSE)
 ) {
   if (verbose) {
     message("Processing ", length(catch), " records")
   }
-  raw_cpue <- catch / effort
+
+  method <- match.arg(method)
+  raw_cpue <- switch(
+    method,
+    ratio = catch / effort,
+    log = log(catch / effort)
+  )
   raw_cpue * gear_factor
 }
