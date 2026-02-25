@@ -4,12 +4,18 @@
 \alias{biomass_index}
 \title{Calculate biomass index}
 \usage{
-biomass_index(cpue, area_swept)
+biomass_index(cpue = NULL, area_swept, catch = NULL, effort = NULL, ...)
 }
 \arguments{
 \item{cpue}{Numeric vector of CPUE values}
 
 \item{area_swept}{Numeric vector of area swept (e.g., km^2)}
+
+\item{catch}{Numeric}
+
+\item{effort}{Numeric}
+
+\item{...}{arguments passed to CPUE}
 }
 \value{
 A numeric vector of the biomass index
