@@ -24,7 +24,12 @@ biomass_index(
 
 \item{verbose}{Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)}
 
-\item{...}{arguments passed to CPUE}
+\item{...}{
+  Arguments passed on to \code{\link[=cpue]{cpue}}
+  \describe{
+    \item{\code{gear_factor}}{Numeric adjustment for gear standardize}
+    \item{\code{method}}{}
+  }}
 }
 \value{
 A numeric vector of the biomass index
