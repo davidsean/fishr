@@ -20,9 +20,15 @@ biomass_index <- function(
   area_swept,
   catch = NULL,
   effort = NULL,
+  verbose = getOption("fishr.verbose", default = FALSE),
   ...
 ) {
   rlang::check_dots_used()
+
+  if (verbose) {
+    message("Processing ", length(area_swept), " area records")
+  }
+
   if (is.null(cpue) && !is.null(catch) && !is.null(effort)) {
     cpue <- cpue(catch, effort, ...)
   }

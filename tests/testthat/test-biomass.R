@@ -9,3 +9,16 @@ test_that("biomass with vectors simple ratio", {
     c(10, 10)
   )
 })
+
+
+test_that("Biomass_index uses verbosity option", {
+  withr::local_options(fishr.verbose = TRUE) # will be reset when this test_that block finishes
+  expect_snapshot(
+    biomass_index(cpue = c(100, 200), area_swept = c(10, 20))
+  )
+})
+
+test_that("Biomass_index uses verbosity option", {
+  withr::local_options(fishr.verbose = FALSE) # will be reset when this test_that block finishes
+  expect_silent(biomass_index(cpue = c(100, 200), area_swept = c(10, 20)))
+})

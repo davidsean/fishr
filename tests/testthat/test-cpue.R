@@ -53,7 +53,8 @@ test_that("test verbose", {
   )
   expect_no_message(cpue(
     catch = c(100, 200),
-    effort = c(10, 20)
+    effort = c(10, 20),
+    verbose = FALSE
   ))
 })
 
