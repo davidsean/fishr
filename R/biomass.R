@@ -6,7 +6,7 @@
 #' @param area_swept Numeric vector of area swept (e.g., km^2)
 #' @param ... arguments passed to CPUE
 #' @inheritParams cpue
-#' @inheritDotParams cpue -catch -effort
+#' @inheritDotParams cpue
 #'
 #' @returns A numeric vector of the biomass index
 #' @export
