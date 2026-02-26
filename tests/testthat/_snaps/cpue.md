@@ -14,5 +14,9 @@
       Warning in `catch / effort`:
       longer object length is not a multiple of shorter object length
     Output
-      [1] 10 20 30
+      CPUE Results
+      Num records:  3 
+      Gear factor:  1 
+      Method:  ratio 
+      Values:  10 20 30 
 
