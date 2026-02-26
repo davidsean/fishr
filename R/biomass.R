@@ -3,10 +3,11 @@
 #' Calculation of biomass index from the CPUE and area swept
 #'
 #' @param cpue Numeric vector of CPUE values
+#' @param catch Numeric vector of catch values
 #' @param area_swept Numeric vector of area swept (e.g., km^2)
 #' @param ... arguments passed to CPUE
-#' @inheritParams cpue
-#' @inheritDotParams cpue
+#' @inheritParams cpue.numeric
+#' @inheritDotParams cpue.numeric
 #'
 #' @returns A numeric vector of the biomass index
 #' @export

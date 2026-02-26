@@ -2,29 +2,46 @@
 % Please edit documentation in R/cpue.R
 \name{cpue}
 \alias{cpue}
+\alias{cpue.default}
+\alias{cpue.data.frame}
+\alias{cpue.numeric}
 \title{Calculate Catch per unit effort (CPUE)}
 \usage{
-cpue(
+cpue(catch, ...)
+
+\method{cpue}{default}(catch, ...)
+
+\method{cpue}{data.frame}(
+  catch,
+  gear_factor = 1,
+  method = c("ratio", "log"),
+  verbose = getOption("fishr.verbose", default = FALSE, ...)
+)
+
+\method{cpue}{numeric}(
   catch,
   effort,
   gear_factor = 1,
   method = c("ratio", "log"),
-  verbose = getOption("fishr.verbose", default = FALSE)
+  verbose = getOption("fishr.verbose", default = FALSE),
+  ...
 )
 }
 \arguments{
-\item{catch}{Numeric vector of catch}
+\item{catch}{Dataframe with columns 'catch' and 'effort' columns}
 
-\item{effort}{Numeric vector of effort}
+\item{...}{Additional arguments passed on to methods}
 
 \item{gear_factor}{Numeric adjustment for gear standardize}
 
 \item{method}{}
 
 \item{verbose}{Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)}
+
+\item{effort}{Numeric vector of effort}
 }
 \value{
-a numeric, vector of CPUE values
+a numeric, vector of CPUE values of the class \code{cpue_result}
 }
 \description{
 Calculate Catch per unit effort (CPUE) as catch divided by effort, optionally adjusting for gear standardization.

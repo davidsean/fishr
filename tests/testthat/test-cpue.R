@@ -76,3 +76,15 @@ test_that("CPUE warns when catch and effort lengths differ", {
   )
   expect_no_warning(cpue(100, 10))
 })
+
+
+## testing S3 classes
+test_that("CPUE is the right class", {
+  results <- cpue(100, 10)
+  expect_s3_class(results, "cpue_result")
+})
+
+test_that("print works", {
+  results <- cpue(100, 10)
+  expect_snapshot(print(results))
+})

@@ -4,7 +4,7 @@
       cpue("five", 10)
     Condition
       Error:
-      ! 'catch' must be numeric, got character.
+      ! No method available for class character
 
 # CPUE warns when catch and effort lengths differ
 
@@ -19,4 +19,15 @@
       Gear factor:  1 
       Method:  ratio 
       Values:  10 20 30 
+
+# print works
+
+    Code
+      print(results)
+    Output
+      CPUE Results
+      Num records:  1 
+      Gear factor:  1 
+      Method:  ratio 
+      Values:  10 
 

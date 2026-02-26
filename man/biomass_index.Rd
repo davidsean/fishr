@@ -18,14 +18,14 @@ biomass_index(
 
 \item{area_swept}{Numeric vector of area swept (e.g., km^2)}
 
-\item{catch}{Numeric vector of catch}
+\item{catch}{Numeric vector of catch values}
 
 \item{effort}{Numeric vector of effort}
 
 \item{verbose}{Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)}
 
 \item{...}{
-  Arguments passed on to \code{\link[=cpue]{cpue}}
+  Arguments passed on to \code{\link[=cpue.numeric]{cpue.numeric}}
   \describe{
     \item{\code{gear_factor}}{Numeric adjustment for gear standardize}
     \item{\code{method}}{}

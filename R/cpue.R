@@ -3,23 +3,65 @@
 #' Calculate Catch per unit effort (CPUE) as catch divided by effort, optionally adjusting for gear standardization.
 #'
 #' @param catch Numeric vector of catch
+#' @param ... Additional arguments passed on to methods
+#' @export
+cpue <- function(catch, ...) {
+  UseMethod("cpue")
+}
+
+#' @rdname cpue
+#'
+#' @export
+cpue.default <- function(catch, ...) {
+  stop("No method available for class ", class(catch), call. = FALSE)
+}
+
+#' @rdname cpue
+#'
+#' @param catch Dataframe with columns 'catch' and 'effort' columns
+
+#' @export
+cpue.data.frame <- function(
+  catch,
+  gear_factor = 1,
+  method = c("ratio", "log"),
+  verbose = getOption("fishr.verbose", default = FALSE, ...)
+) {
+  if (!"catch" %in% names(catch)) {
+    stop("Column 'catch' not found in data frame.", call. = FALSE)
+  }
+  if (!"effort" %in% names(catch)) {
+    stop("Column 'effort' not found in data frame.", call. = FALSE)
+  }
+  cpue(
+    catch = catch$catch,
+    effort = catch$effort,
+    gear_factor = gear_factor,
+    method = method,
+    verbose = verbose
+  )
+}
+
+
+#' @rdname cpue
 #' @param effort Numeric vector of effort
 #' @param gear_factor Numeric adjustment for gear standardize
 #' @param verbose Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)
 #' @param method
 #'
-#' @returns a numeric, vector of CPUE values
+#' @returns a numeric, vector of CPUE values of the class `cpue_result`
 #' @export
 #'
 #' @examples
 #' cpue(100,10)
 #' cpue(100, 10, gear_factor=0.5)
-cpue <- function(
+cpue.numeric <- function(
   catch,
   effort,
   gear_factor = 1,
   method = c("ratio", "log"),
-  verbose = getOption("fishr.verbose", default = FALSE)
+  verbose = getOption("fishr.verbose", default = FALSE),
+  ...
 ) {
   validate_numeric_inputs(catch = catch, effort = effort)
   if (verbose) {
@@ -65,7 +107,9 @@ summary.cpue_result <- function(object, ...) {
   invisible(object)
 }
 
-
+#' Constructor for the cpue_result class
+#'
+#' @noRd
 new_cpue_result <- function(values, method, gear_factor, n_records) {
   result <- structure(
     values,
