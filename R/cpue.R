@@ -55,13 +55,13 @@ print.cpue_result <- function(x, ...) {
 #' @export
 summary.cpue_result <- function(object, ...) {
   cat("CPUE Results\n")
-  cat("Num records: ", attr(object, "n_records"), "\n")
-  cat("Gear factor: ", attr(object, "gear_factor"), "\n")
-  cat("Method: ", attr(object, "method"), "\n")
-  cat("Values: ", round(object, 2), "\n")
-  cat("Mean CPUE:   ", round(mean(object), 2), "\n")
-  cat("Median CPUE: ", round(stats::median(object), 2), "\n")
-  cat("SD CPUE:     ", round(stats::sd(object), 2), "\n")
+  cat("Num records:\t", attr(object, "n_records"), "\n")
+  cat("Gear factor:\t", attr(object, "gear_factor"), "\n")
+  cat("Method:\t", attr(object, "method"), "\n")
+  cat("Values:\t", round(object, 2), "\n")
+  cat("Mean CPUE:\t", round(mean(object), 2), "\n")
+  cat("Median CPUE:\t", round(stats::median(object), 2), "\n")
+  cat("SD CPUE:\t", round(stats::sd(object), 2), "\n")
   invisible(object)
 }
 
