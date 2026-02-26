@@ -33,16 +33,32 @@ cpue <- function(
     log = log(catch / effort)
   )
   result <- raw_cpue * gear_factor
-  attr(result, "gear_factor") <- gear_factor
-  attr(result, "n_records") <- length(catch)
-  attr(result, "method") <- method
-  class(result) <- "cpue_result"
+  result <- new_cpue_result(
+    result,
+    method = method,
+    gear_factor = gear_factor,
+    n_records = length(catch)
+  )
   return(result)
 }
 
 #' @export
 print.cpue_result <- function(x, ...) {
-  cat("CPUE Results for", length(x), " records\n")
+  cat("CPUE Results\n")
+  cat("Num records: ", attr(x, "n_records"), "\n")
+  cat("Gear factor: ", attr(x, "gear_factor"), "\n")
+  cat("Method: ", attr(x, "method"), "\n")
   cat("Values: ", round(x, 2), "\n")
   invisible(x)
+}
+
+new_cpue_result <- function(values, method, gear_factor, n_records) {
+  result <- structure(
+    values,
+    method = method,
+    gear_factor = gear_factor,
+    n_records = n_records
+  )
+  class(result) <- "cpue_result"
+  return(result)
 }
