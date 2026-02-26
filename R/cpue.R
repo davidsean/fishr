@@ -32,5 +32,17 @@ cpue <- function(
     ratio = catch / effort,
     log = log(catch / effort)
   )
-  raw_cpue * gear_factor
+  result <- raw_cpue * gear_factor
+  attr(result, "gear_factor") <- gear_factor
+  attr(result, "n_records") <- length(catch)
+  attr(result, "method") <- method
+  class(result) <- "cpue_result"
+  return(result)
+}
+
+#' @export
+print.cpue_result <- function(x, ...) {
+  cat("CPUE Results for", length(x), " records\n")
+  cat("Values: ", round(x, 2), "\n")
+  invisible(x)
 }
