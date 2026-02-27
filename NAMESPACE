@@ -3,6 +3,7 @@
 S3method(cpue,data.frame)
 S3method(cpue,default)
 S3method(cpue,numeric)
+S3method(plot,cpue_result)
 S3method(print,cpue_result)
 S3method(summary,cpue_result)
 export(biomass_index)
