@@ -25,7 +25,8 @@ cpue.data.frame <- function(
   catch,
   gear_factor = 1,
   method = c("ratio", "log"),
-  verbose = getOption("fishr.verbose", default = FALSE, ...)
+  verbose = getOption("fishr.verbose", default = FALSE),
+  ...
 ) {
   if (!"catch" %in% names(catch)) {
     stop("Column 'catch' not found in data frame.", call. = FALSE)
@@ -105,6 +106,31 @@ summary.cpue_result <- function(object, ...) {
   cat("Median CPUE:\t", round(stats::median(object), 2), "\n")
   cat("SD CPUE:\t", round(stats::sd(object), 2), "\n")
   invisible(object)
+}
+
+
+#' @export
+plot.cpue_result <- function(x, ...) {
+  # plott_cpue_result <- function(x, y, ...) {
+  # I dont really care about y ?! but I need it because I need to match the generic signature?
+  method <- attr(x, "method")
+  gear_factor <- attr(x, "gear_factor")
+  vals <- unclass(x)
+  switch(
+    method,
+    ratio = {
+      sub_title <- paste("linear-scale with", "Gear: ", gear_factor)
+      plot(vals, sub = sub_title, ...)
+    },
+    log = {
+      sub_title <- paste("log-scale with", "Gear: ", gear_factor)
+      plot(vals, sub = sub_title, log = "y", ...)
+    }
+  )
+
+  # invisible(x,y)
+  # I cannot return two values!
+  invisible(x)
 }
 
 #' Constructor for the cpue_result class
