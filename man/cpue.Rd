@@ -15,7 +15,8 @@ cpue(catch, ...)
   catch,
   gear_factor = 1,
   method = c("ratio", "log"),
-  verbose = getOption("fishr.verbose", default = FALSE, ...)
+  verbose = getOption("fishr.verbose", default = FALSE),
+  ...
 )
 
 \method{cpue}{numeric}(

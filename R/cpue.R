@@ -111,25 +111,21 @@ summary.cpue_result <- function(object, ...) {
 
 #' @export
 plot.cpue_result <- function(x, ...) {
-  # plott_cpue_result <- function(x, y, ...) {
-  # I dont really care about y ?! but I need it because I need to match the generic signature?
   method <- attr(x, "method")
   gear_factor <- attr(x, "gear_factor")
   vals <- unclass(x)
   switch(
     method,
     ratio = {
-      sub_title <- paste("linear-scale with", "Gear: ", gear_factor)
-      plot(vals, sub = sub_title, ...)
+      subtitle <- paste("linear-scale with", "Gear: ", gear_factor)
+      plot(vals, sub = subtitle, ...)
     },
     log = {
-      sub_title <- paste("log-scale with", "Gear: ", gear_factor)
-      plot(vals, sub = sub_title, log = "y", ...)
+      subtitle <- paste("log-scale with", "Gear: ", gear_factor)
+      plot(vals, sub = subtitle, log = "y", ...)
     }
   )
 
-  # invisible(x,y)
-  # I cannot return two values!
   invisible(x)
 }
 
