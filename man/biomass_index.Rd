@@ -28,7 +28,7 @@ biomass_index(
   Arguments passed on to \code{\link[=cpue.numeric]{cpue.numeric}}
   \describe{
     \item{\code{gear_factor}}{Numeric adjustment for gear standardize}
-    \item{\code{method}}{}
+    \item{\code{method}}{Character, one of "ratio" or "log"}
   }}
 }
 \value{

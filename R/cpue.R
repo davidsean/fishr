@@ -48,7 +48,7 @@ cpue.data.frame <- function(
 #' @param effort Numeric vector of effort
 #' @param gear_factor Numeric adjustment for gear standardize
 #' @param verbose Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)
-#' @param method
+#' @param method Character, one of "ratio" or "log"
 #'
 #' @returns a numeric, vector of CPUE values of the class `cpue_result`
 #' @export

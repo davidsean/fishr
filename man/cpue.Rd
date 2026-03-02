@@ -35,7 +35,7 @@ cpue(catch, ...)
 
 \item{gear_factor}{Numeric adjustment for gear standardize}
 
-\item{method}{}
+\item{method}{Character, one of "ratio" or "log"}
 
 \item{verbose}{Logical value to show messages (default is FALSE, use fishr.verbose option to set globally)}
 
