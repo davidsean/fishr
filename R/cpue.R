@@ -113,19 +113,56 @@ summary.cpue_result <- function(object, ...) {
 plot.cpue_result <- function(x, ...) {
   method <- attr(x, "method")
   gear_factor <- attr(x, "gear_factor")
-  vals <- unclass(x)
+  plot_args <- list(...)
+  vals <- as.numeric(unclass(x))
+
+  # vals will be plotted as the x-axis
+  plot_args["x"] <- list(vals)
+
+  if (length(gear_factor) == 1) {
+    gear_factor_str <- paste("gear_factor:", gear_factor)
+  } else {
+    gear_factor_str <- "multiple gear factors"
+  }
+
+  ## setup the plot with user or default options
+
+  # define default y-label if not given from from elipses
+  if (!"ylab" %in% names(plot_args)) {
+    plot_args["ylab"] <- "CPUE"
+  }
+
+  # define default x-label if not given from from elipses
+  if (!"xlab" %in% names(plot_args)) {
+    plot_args["xlab"] <- "Record"
+  }
+
+  # define default type if not given from from elipses
+  if (!"type" %in% names(plot_args)) {
+    plot_args["type"] <- "b"
+  }
+
   switch(
     method,
     ratio = {
-      subtitle <- paste("linear-scale with", "Gear: ", gear_factor)
-      plot(vals, sub = subtitle, ...)
+      # define sub title if not given from from elipses
+      if (!"sub" %in% names(plot_args)) {
+        plot_args["sub"] <- paste("linear-scale with", gear_factor_str)
+      }
     },
     log = {
-      subtitle <- paste("log-scale with", "Gear: ", gear_factor)
-      plot(vals, sub = subtitle, log = "y", ...)
+      # define sub title if not given from from elipses
+      if (!"sub" %in% names(plot_args)) {
+        plot_args["sub"] <- paste("log-scale with", gear_factor_str)
+      }
+      # define log scale on y if not given from from elipses
+      if (!"log" %in% names(plot_args)) {
+        plot_args["log"] <- "y"
+      }
     }
   )
-
+  # call plot with modded params
+  do.call(plot, plot_args)
   invisible(x)
 }
 
