@@ -45,7 +45,7 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - uses: davidsean/actions/check-r-package@v2
+      - uses: davidsean/actions/check-r-package@
         with:
           upload-snapshots: true
           skip-ascii-code: true
